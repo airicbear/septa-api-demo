@@ -5,7 +5,7 @@ interface ArrivalsInputComponentProps {
   handleChange: (params: URLSearchParams) => void;
 }
 
-function ArrivalsInputComponent({ handleChange: handleArrivalsInputChange }: ArrivalsInputComponentProps) {
+function ArrivalsInputComponent({ handleChange }: ArrivalsInputComponentProps) {
   const [urlParams, setURLParams] = useState<URLSearchParams>(new URLSearchParams());
 
   useState(() => {
@@ -14,7 +14,7 @@ function ArrivalsInputComponent({ handleChange: handleArrivalsInputChange }: Arr
       results: '',
       direction: '',
     });
-    handleArrivalsInputChange(defaultURLParams);
+    handleChange(defaultURLParams);
   });
 
   function handleStationSelect(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -24,7 +24,7 @@ function ArrivalsInputComponent({ handleChange: handleArrivalsInputChange }: Arr
     modifiedURLParams.set("station", newStation);
     setURLParams(modifiedURLParams);
 
-    handleArrivalsInputChange(modifiedURLParams);
+    handleChange(modifiedURLParams);
   }
 
   function handleResultsChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -34,7 +34,7 @@ function ArrivalsInputComponent({ handleChange: handleArrivalsInputChange }: Arr
     modifiedURLParams.set("results", newResults);
     setURLParams(modifiedURLParams);
 
-    handleArrivalsInputChange(modifiedURLParams);
+    handleChange(modifiedURLParams);
   }
 
   function handleDirectionSelect(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -44,7 +44,7 @@ function ArrivalsInputComponent({ handleChange: handleArrivalsInputChange }: Arr
     modifiedURLParams.set("direction", newDirection);
     setURLParams(modifiedURLParams);
 
-    handleArrivalsInputChange(modifiedURLParams);
+    handleChange(modifiedURLParams);
   }
 
   return (

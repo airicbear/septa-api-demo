@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from "react";
-import { SEPTA_API_ALL_DATA, SEPTA_API_BASE_URL } from "./constants/api-constants";
+import { SEPTA_API_ALL_DATA, SEPTA_API_ARRIVALS, SEPTA_API_BASE_URL, SEPTA_API_NEXT_TO_ARRIVE } from "./constants/api-constants";
 import Link from "next/link";
 import ArrivalsInputComponent from "./components/arrivals-input-component";
 import { getURL } from "./utils/api-utils";
+import NextToArriveInputComponent from "./components/next-to-arrive-component";
 
 export default function Page() {
   const [url, setURL] = useState(SEPTA_API_BASE_URL);
@@ -56,8 +57,12 @@ export default function Page() {
             </select>
           </div>
           {
-            (selectedEndpoint == SEPTA_API_ALL_DATA.at(0)) ?
+            (selectedEndpoint == SEPTA_API_ARRIVALS) ?
               <ArrivalsInputComponent handleChange={handleParamsChange} /> : <></>
+          }
+          {
+            (selectedEndpoint == SEPTA_API_NEXT_TO_ARRIVE) ?
+              <NextToArriveInputComponent handleChange={handleParamsChange} /> : <></>
           }
         </div>
       </div>
