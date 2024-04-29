@@ -15,19 +15,27 @@ function NextToArriveInputComponent({ handleChange }: NextToArriveInputComponent
       req2: '9th St',
       req3: '',
     });
+    setURLParams(defaultURLParams);
     handleChange(defaultURLParams);
   });
 
+  function _handleURLParamChange(
+    event: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>,
+    param: string
+  ) {
+    return handleURLParamChange(event, urlParams, param, setURLParams, handleChange);
+  }
+
   function handleStationOneSelect(event: React.ChangeEvent<HTMLSelectElement>) {
-    handleURLParamChange(event, urlParams, "req1", setURLParams, handleChange);
+    _handleURLParamChange(event, "req1");
   }
 
   function handleStationTwoSelect(event: React.ChangeEvent<HTMLSelectElement>) {
-    handleURLParamChange(event, urlParams, "req2", setURLParams, handleChange);
+    _handleURLParamChange(event, "req2");
   }
 
   function handleResultsChange(event: React.ChangeEvent<HTMLInputElement>) {
-    handleURLParamChange(event, urlParams, "req3", setURLParams, handleChange);
+    _handleURLParamChange(event, "req3");
   }
 
   return (
