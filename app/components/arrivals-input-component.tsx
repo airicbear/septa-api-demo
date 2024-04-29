@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { REGIONAL_RAIL_STATIONS } from "../constants/regional-rail-station-constants";
+import { handleURLParamChange } from "../utils/input-component-utils";
 
 interface ArrivalsInputComponentProps {
   handleChange: (params: URLSearchParams) => void;
@@ -17,34 +18,23 @@ function ArrivalsInputComponent({ handleChange }: ArrivalsInputComponentProps) {
     handleChange(defaultURLParams);
   });
 
+  function _handleURLParamChange(
+    event: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>,
+    param: string,
+  ) {
+    return handleURLParamChange(event, urlParams, param, setURLParams, handleChange);
+  }
+
   function handleStationSelect(event: React.ChangeEvent<HTMLSelectElement>) {
-    const newStation = event.target.value;
-
-    let modifiedURLParams = urlParams;
-    modifiedURLParams.set("station", newStation);
-    setURLParams(modifiedURLParams);
-
-    handleChange(modifiedURLParams);
+    _handleURLParamChange(event, "station");
   }
 
   function handleResultsChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const newResults = event.target.value;
-
-    let modifiedURLParams = urlParams;
-    modifiedURLParams.set("results", newResults);
-    setURLParams(modifiedURLParams);
-
-    handleChange(modifiedURLParams);
+    _handleURLParamChange(event, "results");
   }
 
   function handleDirectionSelect(event: React.ChangeEvent<HTMLSelectElement>) {
-    const newDirection = event.target.value;
-
-    let modifiedURLParams = urlParams;
-    modifiedURLParams.set("direction", newDirection);
-    setURLParams(modifiedURLParams);
-
-    handleChange(modifiedURLParams);
+    _handleURLParamChange(event, "direction");
   }
 
   return (

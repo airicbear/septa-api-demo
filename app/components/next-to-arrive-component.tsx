@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { REGIONAL_RAIL_STATIONS } from "../constants/regional-rail-station-constants";
+import { handleURLParamChange } from "../utils/input-component-utils";
 
 interface NextToArriveInputComponentProps {
   handleChange: (params: URLSearchParams) => void;
@@ -18,33 +19,15 @@ function NextToArriveInputComponent({ handleChange }: NextToArriveInputComponent
   });
 
   function handleStationOneSelect(event: React.ChangeEvent<HTMLSelectElement>) {
-    const newStation = event.target.value;
-
-    let modifiedURLParams = urlParams;
-    modifiedURLParams.set("req1", newStation);
-    setURLParams(modifiedURLParams);
-
-    handleChange(modifiedURLParams);
+    handleURLParamChange(event, urlParams, "req1", setURLParams, handleChange);
   }
 
   function handleStationTwoSelect(event: React.ChangeEvent<HTMLSelectElement>) {
-    const newStation = event.target.value;
-
-    let modifiedURLParams = urlParams;
-    modifiedURLParams.set("req2", newStation);
-    setURLParams(modifiedURLParams);
-
-    handleChange(modifiedURLParams);
+    handleURLParamChange(event, urlParams, "req2", setURLParams, handleChange);
   }
 
   function handleResultsChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const newResults = event.target.value;
-
-    let modifiedURLParams = urlParams;
-    modifiedURLParams.set("req3", newResults);
-    setURLParams(modifiedURLParams);
-
-    handleChange(modifiedURLParams);
+    handleURLParamChange(event, urlParams, "req3", setURLParams, handleChange);
   }
 
   return (

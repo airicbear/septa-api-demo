@@ -16,7 +16,7 @@ export const REGIONAL_RAIL_STATIONS = [
     "Angora",
     "Ardmore",
     "Ardsley",
-    "BBala",
+    "Bala",
     "Berwyn",
     "Bethayres",
     "Bridesburg",
