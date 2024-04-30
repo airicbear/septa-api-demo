@@ -15,6 +15,7 @@ function ArrivalsInputComponent({ handleChange }: ArrivalsInputComponentProps) {
       results: '',
       direction: '',
     });
+    setURLParams(defaultURLParams);
     handleChange(defaultURLParams);
   });
 
